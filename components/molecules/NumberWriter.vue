@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col gap-8">
-    <div class="flex gap-4">
-      <NumberInput v-model="inputNumber" />
+  <div class="flex w-full max-w-3xl flex-col items-center gap-8">
+    <div class="flex flex-col gap-4 md:flex-row">
+      <NumberInput v-model="inputNumber" min="0" max="999999" />
       <ButtonComponent
         v-for="localeKey in Object.values(Locale)"
         :key="localeKey"
@@ -12,7 +12,7 @@
       >
     </div>
 
-    <p>{{ writtenOutNumber }}</p>
+    <p class="break-words">{{ writtenOutNumber }}</p>
   </div>
 </template>
 

@@ -8,9 +8,14 @@ export const useWrittenOutNumber = (
   const writtenOutNumber = ref<string>('');
 
   watchEffect(() => {
-    writtenOutNumber.value = translations[locale.value].translateNumber(
-      input.value,
-    );
+    try {
+      writtenOutNumber.value = translations[locale.value].translateNumber(
+        input.value,
+      );
+    } catch {
+      writtenOutNumber.value =
+        translations[locale.value].common.invalidNumberMessage;
+    }
   });
 
   return writtenOutNumber;
